@@ -1,4 +1,8 @@
-// ── Exercice 1 — Affichage de la date du jour (fonction auto-invoquée) ──
+//   Nom: Chtioui
+//   Prénom: Mohamed Amine
+//   Groupe: G1
+//   Module: Technologies Web
+
 (function () {
   const aujourdhui = new Date();
 
@@ -36,11 +40,9 @@
   document.getElementById("span-annee").textContent = annee;
 })();
 
-// ── Exercice 2 — Validation des champs obligatoires ──
 function validerFormulaire() {
   let valide = true;
 
-  // --- Vérification du Nom ---
   const nom = document.getElementById("nom").value.trim();
   const errNom = document.getElementById("err-nom");
   if (nom === "") {
@@ -50,7 +52,6 @@ function validerFormulaire() {
     errNom.style.display = "none";
   }
 
-  // --- Vérification de l'Email ---
   const email = document.getElementById("email");
   const errEmail = document.getElementById("err-email");
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -61,7 +62,6 @@ function validerFormulaire() {
     errEmail.style.display = "none";
   }
 
-  // --- Vérification de l'Age ---
   const ageVal = parseInt(document.getElementById("age").value);
   const errAge = document.getElementById("err-age");
   if (isNaN(ageVal) || ageVal < 15 || ageVal > 60) {
@@ -80,7 +80,6 @@ document
     if (!validerFormulaire()) {
       event.preventDefault();
     } else {
-      // Exercice 3 — Sauvegarder dans localStorage
       localStorage.setItem(
         "form_nom",
         document.getElementById("nom").value.trim(),
@@ -89,11 +88,9 @@ document
         "form_email",
         document.getElementById("email").value.trim(),
       );
-      // Le formulaire se soumet normalement vers impression.php
     }
   });
 
-// ── Exercice 3 — localStorage : restauration au chargement ──
 window.addEventListener("load", function () {
   const nomSauvegarde = localStorage.getItem("form_nom");
   const emailSauvegarde = localStorage.getItem("form_email");
@@ -111,7 +108,6 @@ window.addEventListener("load", function () {
   }
 });
 
-// ── Exercice 4 — Calcul de l'année de naissance ──
 document.getElementById("age").addEventListener("input", function (event) {
   const ageVal = parseInt(event.target.value);
   const spanAnnee = document.getElementById("annee-naissance");
@@ -125,7 +121,6 @@ document.getElementById("age").addEventListener("input", function (event) {
   }
 });
 
-// ── TP6 Partie 1 — chargementPays() avec fetch ──
 function chargementPays() {
   fetch("https://restcountries.com/v3.1/all?fields=name")
     .then(function (response) {

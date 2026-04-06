@@ -1,9 +1,13 @@
+//  Nom: Chtioui
+//  Prénom: Mohamed Amine
+//  Groupe: G1
+//  Module: Technologies Web
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('Acces direct interdit.');
 }
 
-// Récupération et sécurisation des champs
 $nom         = htmlspecialchars(trim($_POST['nom']            ?? ''));
 $email       = htmlspecialchars(trim($_POST['email']          ?? ''));
 $code        = htmlspecialchars(trim($_POST['code']           ?? ''));
@@ -15,19 +19,16 @@ $satisfaction = htmlspecialchars(trim($_POST['satisfaction']  ?? ''));
 $commentaire = htmlspecialchars(trim($_POST['commentaires']   ?? ''));
 $module      = htmlspecialchars(trim($_POST['module']         ?? 'IA'));
 
-// Récupération des cases à cocher (contenu[])
 $contenu = $_POST['contenu'] ?? [];
 $contenu = array_map('htmlspecialchars', $contenu);
 $contenuAffiche = !empty($contenu) ? implode(', ', $contenu) : 'Aucun';
 
-// Formatage de la date
 $dateFr = '';
 if ($date) {
     $dateObj = DateTime::createFromFormat('Y-m-d', $date);
     $dateFr = $dateObj ? $dateObj->format('d/m/Y') : $date;
 }
 
-// Libellé satisfaction
 $satisfactionLabels = [
     '1' => 'Très insatisfaisant',
     '2' => 'Insatisfaisant',
@@ -51,7 +52,7 @@ $satisfactionLibelle = $satisfactionLabels[$satisfaction] ?? 'Non renseigné';
   <h1>Fiche de Réponse</h1>
   <p class="sous-titre">Module : <?= $module ?> — Soumis le <?= date('d/m/Y à H:i') ?></p>
 
-  <!-- ── Informations personnelles ── -->
+
   <h2>Informations personnelles</h2>
   <table>
     <tr><td>Nom</td><td><?= $nom ?: 'Non renseigné' ?></td></tr>
@@ -62,7 +63,7 @@ $satisfactionLibelle = $satisfactionLabels[$satisfaction] ?? 'Non renseigné';
     <tr><td>Date de remplissage</td><td><?= $dateFr ?: 'Non renseigné' ?></td></tr>
   </table>
 
-  <!-- ── Informations scolaires ── -->
+
   <h2>Informations scolaires</h2>
   <table>
     <tr><td>Niveau d'étude</td><td><?= $niveau ?: 'Non renseigné' ?></td></tr>
@@ -70,7 +71,6 @@ $satisfactionLibelle = $satisfactionLabels[$satisfaction] ?? 'Non renseigné';
     <tr><td>Satisfaction globale</td><td><?= $satisfactionLibelle ?></td></tr>
   </table>
 
-  <!-- ── Informations supplémentaires ── -->
   <h2>Informations supplémentaires</h2>
   <table>
     <tr><td>Commentaires</td><td><?= $commentaire ?: 'Non renseigné' ?></td></tr>

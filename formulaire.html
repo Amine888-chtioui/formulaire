@@ -3,116 +3,147 @@
   Prénom: Mohamed Amine
   Groupe: G1
   Module: Technologies Web
-  TP N° 3 : HTML
 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Formulaire de satisfaction - Cours IA</title>
-</head>
-<body>
-
-  <!-- Exercice 3 — message restauration localStorage -->
-  <div id="msg-restauration" style="display:none; text-align:center; background:#d1fae5; color:#065f46; padding:10px; border-radius:8px; margin-bottom:16px; max-width:640px; margin-left:auto; margin-right:auto;">
-    &#10003; Vos données précédentes ont été restaurées.
-  </div>
-
-  <h1>Questionnaire de satisfaction</h1>
-  <h2>Cours d'Intelligence Artificielle</h2>
-
-  <!-- Exercice 1 — div date du jour -->
-  <div style="text-align:center; margin-bottom:10px; font-weight:600;">
-    Aujourd'hui :
-    <span id="span-jour" style="color:#2563eb;"></span> /
-    <span id="span-mois" style="color:#16a34a;"></span> /
-    <span id="span-annee" style="color:#dc2626;"></span>
-  </div>
-
-  <p>Merci de remplir ce formulaire afin d'évaluer le cours d'Intelligence Artificielle.</p>
-
-  <form action="impression.php" method="post" id="monFormulaire">
-
-    <fieldset>
-      <legend>Information personnelles</legend>
-
-      <label for="nom">Nom :</label><br />
-      <input type="text" id="nom" name="nom" placeholder="Votre nom" /><br />
-      <span id="err-nom" style="display:none; color:red; font-size:0.85rem;">Le nom est obligatoire.</span><br />
-
-      <label for="email">Adresse email :</label><br />
-      <input type="email" id="email" name="email" placeholder="exemple@email.com" /><br />
-      <span id="err-email" style="display:none; color:red; font-size:0.85rem;">Email invalide ou manquant.</span><br />
-
-      <label for="code">Code étudiant :</label><br />
-      <input type="text" id="code" name="code" /><br />
-
-      <label for="age">Age :</label><br />
-      <input type="number" id="age" name="age" /><br />
-      <span id="err-age" style="display:none; color:red; font-size:0.85rem;">Age requis (entre 15 et 60 ans).</span><br />
-      <!-- Exercice 4 — span année de naissance -->
-      <span id="annee-naissance" style="color:#2563eb; font-style:italic; font-size:0.9rem;"></span><br />
-
-      <label for="lieu_naissance">Lieu de naissance :</label><br />
-      <select id="lieu_naissance" name="lieu_naissance">
-        <option value="">-- Chargement des pays... </option>
-      </select><br />
-
-      <label for="date">Date de remplissage :</label><br />
-      <input type="date" id="date" name="date" />
-    </fieldset>
-
-    <fieldset>
-      <legend>Informations Scolaires</legend>
-
-      <p>Votre niveau d'étude :</p><br />
-      <input type="radio" id="licence" name="niveau" value="Licence" />
-      <label for="licence">Licence</label><br />
-      <input type="radio" id="cycle" name="niveau" value="Cycle" />
-      <label for="cycle">Cycle ingénieur</label><br />
-      <input type="radio" id="master" name="niveau" value="Master" />
-      <label for="master">Master</label><br /><br />
-
-      <p>Contenus du cours appréciés :</p><br />
-      <input type="checkbox" id="ml" name="contenu[]" value="ML" />
-      <label for="ml">Machine Learning</label><br />
-      <input type="checkbox" id="dl" name="contenu[]" value="DL" />
-      <label for="dl">Deep Learning</label><br />
-      <input type="checkbox" id="nlp" name="contenu[]" value="NLP" />
-      <label for="nlp">Traitement du langage naturel</label><br /><br />
-
-      <label for="satisfaction">Degré de satisfaction global :</label><br />
-      <select id="satisfaction" name="satisfaction">
-        <option value="">-- Choisir --</option>
-        <option value="1">Très insatisfaisant</option>
-        <option value="2">Insatisfaisant</option>
-        <option value="3">Moyen</option>
-        <option value="4">Satisfaisant</option>
-        <option value="5">Très satisfaisant</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>Information supplémentaires</legend>
-
-      <label for="commentaires">Commentaires et suggestions :</label><br /><br />
-      <textarea id="commentaires" name="commentaires" rows="5"></textarea><br /><br />
-
-      <label for="fichier">Joindre un fichier (optionnel) :</label><br /><br />
-      <input type="file" id="fichier" name="fichier" />
-    </fieldset>
-
-    <div class="btn">
-      <input type="submit" value="Envoyer" />
-      <input type="reset" value="Réinitialiser" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulaire de satisfaction - Cours IA</title>
+  </head>
+  <body>
+    <div
+      id="msg-restauration"
+      style="
+        display: none;
+        text-align: center;
+        background: #d1fae5;
+        color: #065f46;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      &#10003; Vos données précédentes ont été restaurées.
     </div>
 
-  </form>
+    <h1>Questionnaire de satisfaction</h1>
+    <h2>Cours d'Intelligence Artificielle</h2>
 
-  <!-- Lien vers le fichier JavaScript externe -->
-  <script src="script.js"></script>
+    <div style="text-align: center; margin-bottom: 10px; font-weight: 600">
+      Aujourd'hui :
+      <span id="span-jour" style="color: #2563eb"></span> /
+      <span id="span-mois" style="color: #16a34a"></span> /
+      <span id="span-annee" style="color: #dc2626"></span>
+    </div>
 
-</body>
+    <p>
+      Merci de remplir ce formulaire afin d'évaluer le cours d'Intelligence
+      Artificielle.
+    </p>
+
+    <form action="impression.php" method="post" id="monFormulaire">
+      <fieldset>
+        <legend>Information personnelles</legend>
+
+        <label for="nom">Nom :</label><br />
+        <input type="text" id="nom" name="nom" placeholder="Votre nom" /><br />
+        <span id="err-nom" style="display: none; color: red; font-size: 0.85rem"
+          >Le nom est obligatoire.</span
+        ><br />
+
+        <label for="email">Adresse email :</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="exemple@email.com"
+        /><br />
+        <span
+          id="err-email"
+          style="display: none; color: red; font-size: 0.85rem"
+          >Email invalide ou manquant.</span
+        ><br />
+
+        <label for="code">Code étudiant :</label><br />
+        <input type="text" id="code" name="code" /><br />
+
+        <label for="age">Age :</label><br />
+        <input type="number" id="age" name="age" /><br />
+        <span id="err-age" style="display: none; color: red; font-size: 0.85rem"
+          >Age requis (entre 15 et 60 ans).</span
+        ><br />
+
+        <span
+          id="annee-naissance"
+          style="color: #2563eb; font-style: italic; font-size: 0.9rem"
+        ></span
+        ><br />
+
+        <label for="lieu_naissance">Lieu de naissance :</label><br />
+        <select id="lieu_naissance" name="lieu_naissance">
+          <option value="">-- Chargement des pays...</option></select
+        ><br />
+
+        <label for="date">Date de remplissage :</label><br />
+        <input type="date" id="date" name="date" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Informations Scolaires</legend>
+
+        <p>Votre niveau d'étude :</p>
+        <br />
+        <input type="radio" id="licence" name="niveau" value="Licence" />
+        <label for="licence">Licence</label><br />
+        <input type="radio" id="cycle" name="niveau" value="Cycle" />
+        <label for="cycle">Cycle ingénieur</label><br />
+        <input type="radio" id="master" name="niveau" value="Master" />
+        <label for="master">Master</label><br /><br />
+
+        <p>Contenus du cours appréciés :</p>
+        <br />
+        <input type="checkbox" id="ml" name="contenu[]" value="ML" />
+        <label for="ml">Machine Learning</label><br />
+        <input type="checkbox" id="dl" name="contenu[]" value="DL" />
+        <label for="dl">Deep Learning</label><br />
+        <input type="checkbox" id="nlp" name="contenu[]" value="NLP" />
+        <label for="nlp">Traitement du langage naturel</label><br /><br />
+
+        <label for="satisfaction">Degré de satisfaction global :</label><br />
+        <select id="satisfaction" name="satisfaction">
+          <option value="">-- Choisir --</option>
+          <option value="1">Très insatisfaisant</option>
+          <option value="2">Insatisfaisant</option>
+          <option value="3">Moyen</option>
+          <option value="4">Satisfaisant</option>
+          <option value="5">Très satisfaisant</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Information supplémentaires</legend>
+
+        <label for="commentaires">Commentaires et suggestions :</label
+        ><br /><br />
+        <textarea id="commentaires" name="commentaires" rows="5"></textarea
+        ><br /><br />
+
+        <label for="fichier">Joindre un fichier (optionnel) :</label
+        ><br /><br />
+        <input type="file" id="fichier" name="fichier" />
+      </fieldset>
+
+      <div class="btn">
+        <input type="submit" value="Envoyer" />
+        <input type="reset" value="Réinitialiser" />
+      </div>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
 </html>
