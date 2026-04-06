@@ -77,8 +77,9 @@ function validerFormulaire() {
 document
   .getElementById("monFormulaire")
   .addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (validerFormulaire()) {
+    if (!validerFormulaire()) {
+      event.preventDefault();
+    } else {
       // Exercice 3 — Sauvegarder dans localStorage
       localStorage.setItem(
         "form_nom",
@@ -88,14 +89,7 @@ document
         "form_email",
         document.getElementById("email").value.trim(),
       );
-
-      // Exercice 5 — Alert de confirmation
-      const nomSaisi = document.getElementById("nom").value.trim();
-      alert(
-        `Merci ${nomSaisi} ! Votre formulaire de satisfaction a bien été envoyé.`,
-      );
-
-      event.target.reset();
+      // Le formulaire se soumet normalement vers impression.php
     }
   });
 
