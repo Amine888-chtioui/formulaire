@@ -1,0 +1,225 @@
+/*  Nom: Chtioui
+    Prénom: Mohamed Amine
+    Groupe: G1
+    Module: Technologies Web
+    TP N° 3 : CSS 
+*/
+:root {
+  --couleur-primaire: #2563eb;
+  --couleur-secondaire: #1e40af;
+  --couleur-fond: #f0f4ff;
+  --couleur-blanc: #ffffff;
+  --couleur-texte: #1e293b;
+  --couleur-bordure: #cbd5e1;
+  --couleur-reset: #ef4444;
+  --radius: 8px;
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Tahoma, Verdana, sans-serif;
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--couleur-primaire);
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--couleur-secondaire);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+p {
+  font-style: italic;
+  color: var(--couleur-texte);
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+form {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+fieldset {
+  background-color: var(--couleur-blanc);
+  border: 2px solid var(--couleur-fond);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+legend {
+  font-weight: 700;
+  color: var(--couleur-blanc);
+  background-color: var(--couleur-primaire);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+form label,
+form p {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--couleur-texte);
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  background-color: #f8fafc;
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--couleur-primaire);
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  font-weight: 400;
+}
+
+select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--couleur-texte);
+  background-color: #fcf8f9;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--couleur-primaire);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  background-color: var(--couleur-blanc);
+}
+
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--couleur-texte);
+  background-color: #f8fafc;
+  resize: vertical;
+  font-family: inherit;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+input[type="submit"],
+input[type="reset"] {
+  width: 150px;
+  padding: 12px 32px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+input[type="submit"] {
+  background-color: var(--couleur-primaire);
+  color: var(--couleur-blanc);
+  border: none;
+}
+
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+input[type="reset"] {
+  background-color: transparent;
+  color: var(--couleur-reset);
+  border: 2px solid var(--couleur-reset);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  body {
+    padding: 12px;
+  }
+
+  fieldset {
+    padding: 14px 12px;
+  }
+
+  .btn {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type="submit"],
+  input[type="reset"] {
+    width: 100%;
+  }
+}
